@@ -53,7 +53,7 @@ def fact_rental():
         load_data = MsSqlCopyOperator(task_id = "load_fact_rental",
                                       src_conn_id = "cisat_sql", src_schema = "stage", src_table = "fact_rental",
                                       dest_conn_id = "cisat_sql", dest_schema = "sakila_dwh", dest_table = "fact_rental",
-                                      batch_size = 500, bulk_copy=False)
+                                      batch_size = 20000, bulk_copy=False)
 
         truncate_dest() >> load_data
         
